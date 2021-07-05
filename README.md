@@ -25,3 +25,15 @@ let decompressed = Gzip.unzip(compressed);
 console.log(decompressed); // Hi I am Sherazi
 
 ```
+
+## Base64 
+```javascript
+import { Base64 } from 'rn-gzip';
+
+let string="Best tourist places in Pakistan";
+
+let base64 = Base64.btoa(string); // QmVzdCB0b3VyaXN0IHBsYWNlcyBpbiBQYWtpc3Rhbg==
+
+let normal = Base64.atob(string); // Best tourist places in Pakistan
+
+```

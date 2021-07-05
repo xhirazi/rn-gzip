@@ -99,3 +99,7 @@ const Base64 = {
     return output;
   },
 };
+
+module.exports = {
+  Base64
+};
