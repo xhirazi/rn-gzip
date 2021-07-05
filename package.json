@@ -45,5 +45,17 @@
       "json",
       "node"
     ]
-  }
+  },
+  "description": "Gzip compression and decompression",
+  "main": "./src/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xhirazi/rn-gzip.git"
+  },
+  "author": "Syed Ali Sherazi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xhirazi/rn-gzip/issues"
+  },
+  "homepage": "https://github.com/xhirazi/rn-gzip#readme"
 }
