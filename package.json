@@ -15,7 +15,8 @@
     "gzip",
     "react",
     "javascript",
-    "Gcompression"
+    "Gcompression",
+    "react"
   ],
   "dependencies": {
     "pako": "^2.0.3",
