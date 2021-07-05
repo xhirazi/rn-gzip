@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "source": "src/index",
   "react-native": "src/index",
-  "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
