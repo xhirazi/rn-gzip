@@ -5,6 +5,8 @@
 
 ```
 yarn add rn-gzip
+or
+npm install rn-gzip
 ```
 
 ## Usage
