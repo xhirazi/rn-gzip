@@ -4,12 +4,10 @@ import pako from 'pako';
 export default class Gzip {
   /**
    * Gzip json to string
-   * @param {*} data : json
+   * @param {*} data : string
    */
-  public static zip = (data : JSON) => {
-    let stringData = JSON.stringify(data);
-
-    let decoded = new TextEncoder('ascii').encode(stringData);
+  public static zip = (data: string) => {
+    let decoded = new TextEncoder('ascii').encode(data);
 
     let deflateData = pako.deflate(decoded);
 
