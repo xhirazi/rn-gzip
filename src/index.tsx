@@ -53,7 +53,7 @@ export default class Gzip {
 // Inspired by: https://github.com/davidchambers/Base64.js/blob/master/base64.js
 const chars =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-const Base64 = {
+export const Base64 = {
   btoa: (input = '') => {
     let str = input;
     let output = '';
@@ -98,8 +98,4 @@ const Base64 = {
 
     return output;
   },
-};
-
-module.exports = {
-  Base64
 };
