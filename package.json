@@ -1,6 +1,6 @@
 {
   "name": "rn-gzip",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "source": "src/index",
   "react-native": "src/index",
   "scripts": {
@@ -15,7 +15,7 @@
     "gzip",
     "react",
     "javascript",
-    "Zcompression"
+    "Gcompression"
   ],
   "dependencies": {
     "pako": "^2.0.3",
