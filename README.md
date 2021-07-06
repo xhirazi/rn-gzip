@@ -34,6 +34,6 @@ let string="Best tourist places in Pakistan";
 
 let base64 = Base64.btoa(string); // QmVzdCB0b3VyaXN0IHBsYWNlcyBpbiBQYWtpc3Rhbg==
 
-let normal = Base64.atob(string); // Best tourist places in Pakistan
+let normal = Base64.atob(base64); // Best tourist places in Pakistan
 
 ```
