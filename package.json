@@ -1,6 +1,6 @@
 {
   "name": "rn-gzip",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "source": "src/index",
   "react-native": "src/index",
   "scripts": {
