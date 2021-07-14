@@ -1,6 +1,6 @@
 {
   "name": "rn-gzip",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "source": "src/index",
   "react-native": "src/index",
   "scripts": {
@@ -20,7 +20,20 @@
     "atob",
     "btoa",
     "Base64",
-    "decompression"
+    "decompression",
+    "react native",
+    "react native gzip",
+    "gzip react native",
+    "react-native-gzip",
+    "gzip-react-native",
+    "reactnative gzip",
+    "gzip reactnative",
+    "react native glib",
+    "glib react native",
+    "reactnative-gzip",
+    "gzip-reactnative",
+    "react-native-glib",
+    "glib-react-native"
   ],
   "dependencies": {
     "pako": "^2.0.3",
