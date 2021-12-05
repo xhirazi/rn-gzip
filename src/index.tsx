@@ -1,4 +1,4 @@
-import {TextDecoder, TextEncoder} from 'text-decoding';
+import { Buffer } from "buffer";
 import pako from 'pako';
 
 export default class Gzip {
@@ -7,23 +7,12 @@ export default class Gzip {
    * @param {*} data : string
    */
   public static zip = (data: string) => {
-    let decoded = new TextEncoder('ascii').encode(data);
-
-    let deflateData = pako.deflate(decoded);
-
-    let binData = Array.from(deflateData);
-
-    // Convert character-number array to binary string
-    let binaryData = binData
-      .map(function (x) {
-        return String.fromCharCode(x);
-      })
-      .join('');
-
-    // Encode base64 (convert binary to ascii)
-    let strData = Base64.btoa(binaryData);
-
-    return strData;
+    //here are the steps in order to convert binary string data to compressed base64
+    //1. binary-encoded string
+    //2. number-bytes array
+    //3. deflate (compress)
+    //4. compressed base64
+    return Buffer.from(pako.deflate(Buffer.from(data, "binary")), "binary").toString("base64")
   };
 
   /**
@@ -31,69 +20,13 @@ export default class Gzip {
    * @param {*} base64 : string
    * @returns unzip string
    */
-  public static unzip = (base64 : string) => {
-    // Decode base64 (convert ascii to binary)
-    let strData = Base64.atob(base64);
-
-    // Convert binary string to character-number array
-    let charData = strData.split('').map(function (x) {
-      return x.charCodeAt(0);
-    });
-
-    let binData = new Uint8Array(charData);
-
-    let data = pako.inflate(binData);
-
-    return new TextDecoder('utf-8').decode(data);
+  public static unzip = (base64: string) => {
+    //here are the steps in order to convert base64 to final product
+    //1. base64
+    //2. number byte array (Uint8Array)
+    //3. inflate (decompress)
+    //4. convert to decompressed binary string
+    //5. return
+    return Buffer.from(pako.inflate(new Uint8Array(Buffer.from(base64, "base64"))), "binary").toString("binary")
   };
 }
-
-// Inspired by: https://github.com/davidchambers/Base64.js/blob/master/base64.js
-const chars =
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-export const Base64 = {
-  btoa: (input = '') => {
-    let str = input;
-    let output = '';
-
-    for (
-      let block = 0, charCode, i = 0, map = chars;
-      str.charAt(i | 0) || ((map = '='), i % 1);
-      output += map.charAt(63 & (block >> (8 - (i % 1) * 8)))
-    ) {
-      charCode = str.charCodeAt((i += 3 / 4));
-
-      if (charCode > 0xff) {
-        throw new Error(
-          "'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.",
-        );
-      }
-
-      block = (block << 8) | charCode;
-    }
-
-    return output;
-  },
-
-  atob: (input = '') => {
-    let str = input.replace(/=+$/, '');
-    let output = '';
-
-    if (str.length % 4 == 1) {
-      throw new Error(
-        "'atob' failed: The string to be decoded is not correctly encoded.",
-      );
-    }
-    for (
-      let bc = 0, bs = 0, buffer, i = 0;
-      (buffer = str.charAt(i++));
-      ~buffer && ((bs = bc % 4 ? bs * 64 + buffer : buffer), bc++ % 4)
-        ? (output += String.fromCharCode(255 & (bs >> ((-2 * bc) & 6))))
-        : 0
-    ) {
-      buffer = chars.indexOf(buffer);
-    }
-
-    return output;
-  },
-};

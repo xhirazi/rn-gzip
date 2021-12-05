@@ -1,5 +1,13 @@
 # rn-gzip
- Gzip compression and decompression
+ (binary) Gzip compression and decompression
+
+## Why I forked
+
+I initially tried to use this package to compress binary data. I spent days troubleshooting encoding bugs until I finally discovered that rn-gzip uses `String.fromCharCode`, which only encodes in ASCII or something, and so my precious binary data was getting destroyed in compression/decompression.
+
+I decided to fork and public this version of rn-gzip so that others can use this library to compress and decompress data, even if it is in binary.
+
+This package uses the "buffer" package instead of the original "text-decoding" one.
 
 ## Installation Guide
 
@@ -10,6 +18,8 @@ npm install rn-gzip
 ```
 
 ## Usage
+Usage is the exact same as the original package...
+
 ```javascript
 import Gzip from 'rn-gzip';
 
