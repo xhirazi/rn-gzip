@@ -8,7 +8,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "zeroTest": "node src/index.mjs"
   },
   "keywords": [
     "react-native",
@@ -36,8 +37,8 @@
     "glib-react-native"
   ],
   "dependencies": {
-    "pako": "^2.0.3",
-    "text-decoding": "^1.0.0"
+    "buffer": "^6.0.3",
+    "pako": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
