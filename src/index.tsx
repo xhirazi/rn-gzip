@@ -1,4 +1,4 @@
-import { Buffer } from "buffer";
+import {Buffer} from 'buffer';
 import pako from 'pako';
 
 export default class Gzip {
@@ -12,7 +12,10 @@ export default class Gzip {
     //2. number-bytes array
     //3. deflate (compress)
     //4. compressed base64
-    return Buffer.from(pako.deflate(Buffer.from(data, "binary")), "binary").toString("base64")
+    return Buffer.from(
+      pako.deflate(Buffer.from(data, 'binary')),
+      'binary',
+    ).toString('base64');
   };
 
   /**
@@ -27,6 +30,14 @@ export default class Gzip {
     //3. inflate (decompress)
     //4. convert to decompressed binary string
     //5. return
-    return Buffer.from(pako.inflate(new Uint8Array(Buffer.from(base64, "base64"))), "binary").toString("binary")
+    return Buffer.from(
+      pako.inflate(new Uint8Array(Buffer.from(base64, 'base64'))),
+      'binary',
+    ).toString('binary');
   };
 }
+
+export const Base64 = {
+  btoa: (data: string) => Buffer.from(data, 'binary').toString('base64'),
+  atob: (data: string) => Buffer.from(data, 'base64').toString('binary'),
+};
